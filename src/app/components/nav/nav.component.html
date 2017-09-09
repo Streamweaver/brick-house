@@ -1,0 +1,26 @@
+<md-toolbar color="primary">
+  <span>BrickHouse</span>
+  <span class=""></span>
+  <button md-icon-button [mdMenuTriggerFor]="menu">
+    <md-icon>menu</md-icon> Menu
+  </button>
+</md-toolbar>
+
+<md-menu #menu="mdMenu">
+  <button md-menu-item routerLink="">
+    <md-icon>account_balance</md-icon>
+    <a routerLink="">Home</a>
+  </button>
+  <button md-menu-item routerLink="login" *ngIf="!authService.currentUser">
+    <md-icon>fingerprint</md-icon>
+    <span>Login</span>
+  </button>
+  <button md-menu-item routerLink="profile" *ngIf="authService.currentUser">
+    <md-icon>account_circle</md-icon>
+    <span>Profile</span>
+  </button>
+  <button md-menu-item *ngIf="authService.currentUser" (click)="logout()">
+    <md-icon>all_out</md-icon>
+    <span>Logout</span>
+  </button>
+</md-menu>

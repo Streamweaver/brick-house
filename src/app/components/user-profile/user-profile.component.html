@@ -1,0 +1,11 @@
+<!-- User logged in -->
+<div *ngIf="authService.currentUser">
+  <h3>Howdy, {{ authService.currentUser.displayName }}</h3>
+  <img [src]="authService.currentUser.photoURL || 'https://api.adorable.io/avatars/109/fire.png'" width=50px>
+</div>
+<!-- User NOT logged in -->
+<div *ngIf="!authService.currentUser">
+  <h3>Howdy, {{ authService.currentUserDisplayName }}</h3>
+  <p>Login to get started...</p>
+  <button md-button routerLink="/login">Login</button>
+</div>
