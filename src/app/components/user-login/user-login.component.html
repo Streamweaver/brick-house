@@ -1,11 +1,25 @@
 <h1>User Login</h1>
 
-<div *ngIf="!authService.currentUser; else alreadyLoggedIn" class="button-row">
-  <button md-raised-button color="primary" (click)="signInWithGoogle()">Login with Google</button>
+<div *ngIf="!authService.currentUser; else alreadyLoggedIn" class="button-row text-center">
+  <h4>Login or <a href="#">Sign Up</a></h4>
+  <div class="d-inline-flex p-2">
+    <button md-raised-button (click)="signInWithGoogle()" class="google-red"><i class="fa fa-google-plus-square"></i> Login with Google</button>
+  </div>
+  <div class="d-inline-flex p-2">
+    <button md-raised-button color="primary" disabled><i class="fa fa-twitter-square"></i> Login with Twitter</button>
+  </div>
+  <div class="d-inline-flex p-2">
+    <button md-raised-button color="primary" disabled><i class="fa fa-facebook-square"></i> Login with Facebook</button>
+  </div>
+  <div class="d-inline-flex p-2">
+    <button md-raised-button color="primary" disabled><i class="fa fa-github-square"></i> Login with GitHub</button>
+  </div>
   <button md-raised-button disabled>Login with Email</button>
 </div>
 
 <ng-template #alreadyLoggedIn>
-  <p>Loading Profile...</p>
-  <md-spinner></md-spinner>
+  <div class="text-center loader-center">
+    <h4>Logging you in ...</h4>
+    <md-spinner></md-spinner>
+  </div>
 </ng-template>
