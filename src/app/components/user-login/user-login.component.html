@@ -1,9 +1,11 @@
 <h1>User Login</h1>
-<div *ngIf="!authService.currentUser; else alreadyLoggedIn">
-  <button md-button (click)="signInWithGoogle()">Login with Google</button>
-  <button md-button disabled>Login with Email</button>
+
+<div *ngIf="!authService.currentUser; else alreadyLoggedIn" class="button-row">
+  <button md-raised-button color="primary" (click)="signInWithGoogle()">Login with Google</button>
+  <button md-raised-button disabled>Login with Email</button>
 </div>
 
 <ng-template #alreadyLoggedIn>
-  already logged in!
+  <p>Loading Profile...</p>
+  <md-spinner></md-spinner>
 </ng-template>

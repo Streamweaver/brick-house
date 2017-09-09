@@ -5,7 +5,7 @@ import {environment} from '../environments/environment';
 import {AngularFireModule} from 'angularfire2';
 import {RouterModule, Routes} from '@angular/router';
 
-import {MdToolbarModule, MdButtonModule, MdCardModule, MdMenuModule, MdIconModule} from '@angular/material';
+import {MdToolbarModule, MdButtonModule, MdCardModule, MdMenuModule, MdIconModule, MdProgressSpinnerModule} from '@angular/material';
 
 import 'hammerjs';
 
@@ -48,6 +48,7 @@ const appRoutes: Routes = [
     MdMenuModule,
     MdCardModule,
     MdButtonModule,
+    MdProgressSpinnerModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],

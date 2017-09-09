@@ -8,11 +8,11 @@
 
 <md-menu #menu="mdMenu">
   <button md-menu-item routerLink="">
-    <md-icon>account_balance</md-icon>
+    <md-icon>home</md-icon>
     <a routerLink="">Home</a>
   </button>
   <button md-menu-item routerLink="login" *ngIf="!authService.currentUser">
-    <md-icon>fingerprint</md-icon>
+    <md-icon>person</md-icon>
     <span>Login</span>
   </button>
   <button md-menu-item routerLink="profile" *ngIf="authService.currentUser">
@@ -20,7 +20,7 @@
     <span>Profile</span>
   </button>
   <button md-menu-item *ngIf="authService.currentUser" (click)="logout()">
-    <md-icon>all_out</md-icon>
+    <md-icon>person_outline</md-icon>
     <span>Logout</span>
   </button>
 </md-menu>
