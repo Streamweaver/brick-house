@@ -4,6 +4,8 @@ import {NgModule} from '@angular/core';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from 'angularfire2';
 import {RouterModule, Routes} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
 import {MdToolbarModule, MdButtonModule, MdCardModule, MdMenuModule, MdIconModule, MdProgressSpinnerModule} from '@angular/material';
 
@@ -50,7 +52,10 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdProgressSpinnerModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule
+    FlashMessagesModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [
     AuthService,
