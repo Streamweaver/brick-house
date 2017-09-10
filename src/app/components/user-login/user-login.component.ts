@@ -33,4 +33,9 @@ export class UserLoginComponent implements OnInit {
       .catch((error) => this.failedSignIn(error));
   }
 
+  signInAnonymously() {
+    this.authService.anonymousLogin()
+      .then(() => this.afterSignIn())
+      .catch((error) => this.failedSignIn(error));
+  }
 }

@@ -1,20 +1,26 @@
 <h1>User Login</h1>
 
 <div *ngIf="!authService.currentUser; else alreadyLoggedIn" class="button-row text-center">
-  <h4>Login or <a href="#">Sign Up</a></h4>
-  <div class="d-inline-flex p-2">
-    <button md-raised-button (click)="signInWithGoogle()" class="google-red"><i class="fa fa-google-plus-square"></i> Login with Google</button>
+  <div>
+    <h4>Login or <a href="#">Sign Up</a></h4>
+    <div class="d-inline-flex p-2">
+      <button md-raised-button (click)="signInWithGoogle()" class="google-red"><i class="fa fa-google-plus-square"></i> Login with Google</button>
+    </div>
+    <div class="d-inline-flex p-2">
+      <button md-raised-button color="primary" disabled><i class="fa fa-twitter-square"></i> Login with Twitter</button>
+    </div>
+    <div class="d-inline-flex p-2">
+      <button md-raised-button color="primary" disabled><i class="fa fa-facebook-square"></i> Login with Facebook</button>
+    </div>
+    <div class="d-inline-flex p-2">
+      <button md-raised-button color="primary" disabled><i class="fa fa-github-square"></i> Login with GitHub</button>
+    </div>
   </div>
-  <div class="d-inline-flex p-2">
-    <button md-raised-button color="primary" disabled><i class="fa fa-twitter-square"></i> Login with Twitter</button>
+  <hr class="my-2 mx-5">
+  <div>
+    <h4>Anonymous Login</h4>
+    <button md-raised-button (click)="signInAnonymously()"><i class="fa fa-user-secret"></i> Login Anonymously</button>
   </div>
-  <div class="d-inline-flex p-2">
-    <button md-raised-button color="primary" disabled><i class="fa fa-facebook-square"></i> Login with Facebook</button>
-  </div>
-  <div class="d-inline-flex p-2">
-    <button md-raised-button color="primary" disabled><i class="fa fa-github-square"></i> Login with GitHub</button>
-  </div>
-  <button md-raised-button disabled>Login with Email</button>
 </div>
 
 <ng-template #alreadyLoggedIn>
