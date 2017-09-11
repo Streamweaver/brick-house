@@ -4,12 +4,13 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import {Router} from '@angular/router';
 import * as firebase from 'firebase';
 import {FlashMessagesService} from 'angular2-flash-messages';
-
+import {UserProfile} from '../models/user-profile.model';
 
 @Injectable()
 export class AuthService {
 
-  authState: any = null;
+  authState: firebase.User = null;
+  profile: UserProfile = null;
 
   constructor(private afAuth: AngularFireAuth,
               private db: AngularFireDatabase,
@@ -134,6 +135,7 @@ export class AuthService {
 
   signOut(): void {
     this.afAuth.auth.signOut();
+    this.profile = null;
     this.flashMsg.show('You have been logged', {cssClass: 'alert-success', timeout: 4000});
     this.router.navigate(['/']);
   }
@@ -146,13 +148,32 @@ export class AuthService {
     // useful if your app displays information about users or for admin features
 
     const path = `users/${this.currentUserId}`; // Endpoint on firebase
-    const data = {
-      email: this.authState.email,
-      name: this.authState.displayName
-    };
+    const user = this.db.object(path)
+      .subscribe((data) => {
+        data.email = this.authState.email;
+        data.name = this.authState.displayName;
+        data.photoUrl = this.authState.photoURL;
+        if (!data.pubKey) {
+          data.pubKey = 'PUBKEY';
+        }
+        if (!data.secKey) {
+          data.secKey = 'SECKEY';
+        }
+        this.db.object(path).update(data)
+          .then(() => this.profile = data);
 
-    this.db.object(path).update(data)
-      .catch(error => console.log(error));
+      });
+    // const data = {
+    //   email: this.authState.email,
+    //   name: this.authState.displayName,
+    //   photoUrl: this.authState.photoURL
+    // };
+    // if (!user.pubKey) {
+    //   data['pubKey'] = 'publickey';
+    // }
+    //
+    // this.db.object(path).update(data)
+    //   .catch(error => console.log(error));
 
   }
 
